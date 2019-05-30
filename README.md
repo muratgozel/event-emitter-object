@@ -1,4 +1,4 @@
-# Javascript Event Listener Object
+# Javascript Event Emitter Object
 
 A simple event emitter object that you can plug into your javascript libraries.
 
