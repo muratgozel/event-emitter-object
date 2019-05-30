@@ -14,16 +14,8 @@ npm install event-emitter-object
 
 ## Import
 
-The default file imported by the module is polyfilled, bundled `dist/index.js` file:
-
 ```js
 const EventEmitter = require('event-emitter-object')
-```
-
-If you already have a compiler like babel or already polyfilling your codebase, using `./source/index.js` recommended.
-
-```js
-const EventEmitter = require('event-emitter-object/source')
 ```
 
 ## Use

@@ -1,11 +1,12 @@
 {
   "name": "event-emitter-object",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/index.js",
   "scripts": {
     "release": "bash release/release.sh",
-    "build": "mkdir -p ./source-compiled && ./node_modules/.bin/babel ./source -d ./source-compiled && ./node_modules/.bin/browserify ./source-compiled/index.js -o ./dist/index.js && ./node_modules/.bin/minify ./dist/index.js --out-file ./dist/index.js && rm -rf ./source-compiled",
+    "build": "./node_modules/.bin/browserify ./source/index.js -o ./dist/index.js && ./node_modules/.bin/minify ./dist/index.js --out-file ./dist/index.js",
+    "build-full": "mkdir -p ./source-compiled && ./node_modules/.bin/babel ./source -d ./source-compiled && ./node_modules/.bin/browserify ./source-compiled/index.js -o ./dist/full.js && ./node_modules/.bin/minify ./dist/full.js --out-file ./dist/full.js && rm -rf ./source-compiled",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
