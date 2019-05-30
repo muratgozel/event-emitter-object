@@ -1,6 +1,6 @@
 {
-  "name": "js-event-emitter",
-  "version": "0.1.2",
+  "name": "event-emitter-object",
+  "version": "0.1.3",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/muratgozel/js-event-emitter.git"
+    "url": "git+https://github.com/muratgozel/event-emitter-object.git"
   },
   "keywords": [
     "event",
@@ -21,9 +21,9 @@
   "author": "Murat Gözel <murat@gozel.com.tr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/muratgozel/js-event-emitter/issues"
+    "url": "https://github.com/muratgozel/event-emitter-object/issues"
   },
-  "homepage": "https://github.com/muratgozel/js-event-emitter#readme",
+  "homepage": "https://github.com/muratgozel/event-emitter-object#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",

@@ -9,7 +9,7 @@ API is very similar to [the node.js events][305ab206].
 ## Install
 
 ```sh
-npm install js-event-emitter
+npm install event-emitter-object
 ```
 
 ## Import
@@ -17,13 +17,13 @@ npm install js-event-emitter
 The default file imported by the module is polyfilled, bundled `dist/index.js` file:
 
 ```js
-const EventEmitter = require('js-event-emitter')
+const EventEmitter = require('event-emitter-object')
 ```
 
 If you already have a compiler like babel or already polyfilling your codebase, using `./source/index.js` recommended.
 
 ```js
-const EventEmitter = require('js-event-emitter/source')
+const EventEmitter = require('event-emitter-object/source')
 ```
 
 ## Use
