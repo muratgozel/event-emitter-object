@@ -35,7 +35,7 @@ const EventEmitter = require('event-emitter-object/dist/polyfilled')
 
 3. **Bundle for browsers**
 
-The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. No compilation and polyfills.
+The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. No compilation and polyfills. The variable attached to the browser's `window` object is `EventEmitterObject`.
 
 ```html
 <script src="https://unpkg.com/event-emitter-object@0/dist/browser.js" crossorigin type="text/javascript"></script>
@@ -43,7 +43,7 @@ The source code bundled with `browserify` to generate a `UMD` bundle. This bundl
 
 4. **Polyfilled bundle for browsers**
 
-The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag.
+The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. The variable attached to the browser's `window` object is `EventEmitterObject`.
 
 ```html
 <script src="https://unpkg.com/event-emitter-object@0/dist/browser.polyfilled.js" crossorigin type="text/javascript"></script>
