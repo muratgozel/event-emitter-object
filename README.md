@@ -21,6 +21,7 @@ This package exports multiple builds. Developer has the responsibility to choose
 This is basically the source code itself but minified. There are no compilation and polyfills inside. Use it if you already have a compiler (like babel) and polyfills in your project. (which is mostly is the case.)
 
 ```js
+// just 1498 bytes
 const EventEmitter = require('event-emitter-object')
 ```
 
@@ -29,7 +30,6 @@ const EventEmitter = require('event-emitter-object')
 The source code compiled with babel (with the configuration that can be found inside `babel.config.js` file) and minified. This build contains also polyfills which increases the size of the package dramatically. Polyfills added by the configuration that can be found inside the `.browserlistrc` file.
 
 ```js
-// just 1498 bytes
 const EventEmitter = require('event-emitter-object/dist/polyfilled')
 ```
 
