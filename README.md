@@ -14,8 +14,38 @@ npm install event-emitter-object
 
 ## Import
 
+This package exports multiple builds. Developer has the responsibility to choose the one that best fits to her/his needs.
+
+1. **Minified (default)**
+
+This is basically the source code itself but minified. There are no compilation and polyfills inside. Use it if you already have a compiler (like babel) and polyfills in your project. (which is mostly is the case.)
+
 ```js
 const EventEmitter = require('event-emitter-object')
+```
+
+2. **Polyfilled and minified**
+
+The source code compiled with babel (with the configuration that can be found inside `babel.config.js` file) and minified. This build contains also polyfills which increases the size of the package dramatically. Polyfills added by the configuration that can be found inside the `.browserlistrc` file.
+
+```js
+const EventEmitter = require('event-emitter-object/polyfilled')
+```
+
+3. **Bundle for browsers**
+
+The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. No compilation and polyfills.
+
+```html
+<script src="https://unpkg.com/event-emitter-object@0/dist/browser.js" type="text/javascript"></script>
+```
+
+4. **Polyfilled bundle for browsers**
+
+The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag.
+
+```html
+<script src="https://unpkg.com/event-emitter-object@0/dist/browser.polyfilled.js" type="text/javascript"></script>
 ```
 
 ## Use
@@ -102,3 +132,12 @@ Removes all events and listeners.
 ```js
 emitter.flush()
 ```
+
+## Babel Polyfills Report
+
+This module uses the following polyfills in its polyfilled builds.
+
+1. `es.array.splice `
+2. `es.date.to-string`
+3. `es.object.to-string`
+4. `es.regexp.to-string`
