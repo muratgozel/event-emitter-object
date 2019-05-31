@@ -29,7 +29,8 @@ const EventEmitter = require('event-emitter-object')
 The source code compiled with babel (with the configuration that can be found inside `babel.config.js` file) and minified. This build contains also polyfills which increases the size of the package dramatically. Polyfills added by the configuration that can be found inside the `.browserlistrc` file.
 
 ```js
-const EventEmitter = require('event-emitter-object/polyfilled')
+// just 1498 bytes
+const EventEmitter = require('event-emitter-object/dist/polyfilled')
 ```
 
 3. **Bundle for browsers**
@@ -37,7 +38,7 @@ const EventEmitter = require('event-emitter-object/polyfilled')
 The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. No compilation and polyfills.
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@0/dist/browser.js" type="text/javascript"></script>
+<script src="https://unpkg.com/event-emitter-object@0/dist/browser.js" crossorigin type="text/javascript"></script>
 ```
 
 4. **Polyfilled bundle for browsers**
@@ -45,7 +46,7 @@ The source code bundled with `browserify` to generate a `UMD` bundle. This bundl
 The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag.
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@0/dist/browser.polyfilled.js" type="text/javascript"></script>
+<script src="https://unpkg.com/event-emitter-object@0/dist/browser.polyfilled.js" crossorigin type="text/javascript"></script>
 ```
 
 ## Use
