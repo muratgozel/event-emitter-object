@@ -25,28 +25,26 @@ This is basically the source code itself but minified. There are no compilation 
 const EventEmitter = require('event-emitter-object')
 ```
 
-2. **Polyfilled and minified**
+2. **UMD Bundle**
 
-The source code compiled with babel (with the configuration that can be found inside `babel.config.js` file) and minified. This build contains also polyfills which increases the size of the package dramatically. Polyfills added by the configuration that can be found inside the `.browserlistrc` file.
+The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can also be imported by html script tag. No compilation and polyfills. The variable attached to the browser's `window` object is `EventEmitterObject`.
 
 ```js
-const EventEmitter = require('event-emitter-object/dist/polyfilled')
+const EventEmitterObject = require('event-emitter-object/dist/umd')
 ```
 
-3. **Bundle for browsers**
-
-The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. No compilation and polyfills. The variable attached to the browser's `window` object is `EventEmitterObject`.
+or
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@0/dist/browser.js" crossorigin type="text/javascript"></script>
+<script src="https://unpkg.com/event-emitter-object@1/dist/umd.js" crossorigin type="text/javascript"></script>
 ```
 
-4. **Polyfilled bundle for browsers**
+3. **Polyfilled UMD bundle**
 
-The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can be imported by html script tag. The variable attached to the browser's `window` object is `EventEmitterObject`.
+The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can also be imported by html script tag. The variable attached to the browser's `window` object is `EventEmitterObject`.
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@0/dist/browser.polyfilled.js" crossorigin type="text/javascript"></script>
+<script src="https://unpkg.com/event-emitter-object@1/dist/umd.polyfilled.js" crossorigin type="text/javascript"></script>
 ```
 
 ## Use
@@ -81,7 +79,7 @@ state.on('update', function() {
 
 ## API
 
-### on(eventName, callback, opts)
+### .on(eventName, callback, opts)
 
 Registers a new listener for a certain event.
 
@@ -93,7 +91,7 @@ emitter.on('someEvent', function() {
 })
 ```
 
-### once(eventName, callback)
+### .once(eventName, callback)
 
 This is a shortcut for the `on` method with `{once: true}`:
 
@@ -104,7 +102,7 @@ emitter.on('someEvent', function(){}, {once: true})
 emitter.once('someEvent', function(){})
 ```
 
-### emit(eventName, args)
+### .emit(eventName, args)
 
 Emits a certain event with arguments.
 
@@ -118,7 +116,7 @@ emitter.on('anotherEvent', function(arg1, arg2) {
 emitter.emit('anotherEvent', ['hello', 'world'])
 ```
 
-### removeListeners(eventName)
+### .removeListeners(eventName)
 
 Removes all listeners that belong to a certain event.
 
@@ -126,7 +124,7 @@ Removes all listeners that belong to a certain event.
 emitter.removeListeners('someEvent')
 ```
 
-### flush()
+### .flush()
 
 Removes all events and listeners.
 
