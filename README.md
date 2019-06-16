@@ -48,32 +48,46 @@ The source code compiled with babel and bundled with `browserify` to generate a 
 
 ## Use
 
-Let's say you have a state manager object to control the state of your app.
+This is a pure javascript object which can be used as a super class of another objects or as a standalone.
+
+### Using it as a standalone library
 
 ```js
-function StateManager() {}
-StateManager.prototype.updateState = function updateState(payload) {
-  // update state
-  // ...
-  // and inform listeners that the state has just updated
-  this.emit('update')
-}
-module.exports = StateManager
-```
+const EventEmitter = require('event-emitter-object')
 
-To plug event emitter into your state manager:
+const logger = new EventEmitter()
 
-```js
-StateManager.prototype = Object.assign({}, StateManager.prototype, EventEmitter.prototype)
-```
-
-Now, you can listen and emit events within your state manager:
-
-```js
-const state = new StateManager()
-state.on('update', function() {
-  console.log('State updated!')
+logger.on('criticalError', function(err) {
+  // send log to the server
 })
+
+if (resourceNotFound) {
+  logger.emit('criticalError', [new Error('resourceNotFound')])
+}
+```
+
+### Using as a super class
+
+```js
+const EventEmitter = require('event-emitter-object')
+
+// A Logger object which inherits the methods of EventEmitter
+function Logger() {
+  EventEmitter.call(this)
+}
+Logger.prototype = Object.create(EventEmitter.prototype)
+Logger.prototype.constructor = Logger
+
+Logger.prototype.propertyYouWant = function() {}
+
+// Initiate a logger for a particular type of logs
+const errorLogger = new Logger()
+errorLogger.on('error', function(err) {
+  // send log to the server
+})
+if (resourceNotFound) {
+  errorLogger.emit('error', [new Error('resourceNotFound')])
+}
 ```
 
 ## API
@@ -123,12 +137,12 @@ Removes all listeners that belong to a certain event.
 emitter.removeListeners('someEvent')
 ```
 
-### .flush()
+### .flushEventEmitter()
 
 Removes all events and listeners.
 
 ```js
-emitter.flush()
+emitter.flushEventEmitter()
 ```
 
 ## Babel Polyfills Report
