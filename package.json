@@ -1,6 +1,6 @@
 {
   "name": "event-emitter-object",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/index.js",
   "scripts": {

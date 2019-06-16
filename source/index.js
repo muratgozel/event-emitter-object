@@ -1,43 +1,41 @@
 function EventEmitter() {}
 
-EventEmitter.prototype.events = {}
+EventEmitter.prototype._events = {}
 
-EventEmitter.prototype.eventsWillBeFiredOnce = {}
-
-EventEmitter.prototype.isObject = function isObject(value) {
-  return Object.prototype.toString.call(value) === '[object Object]'
-}
+EventEmitter.prototype._eventsWillBeFiredOnce = {}
 
 EventEmitter.prototype.on = function on(eventName, fn, _opts = null) {
   if (typeof fn != 'function' || typeof eventName != 'string') {
     return false
   }
 
-  if (!this.events.hasOwnProperty(eventName)) {
-    this.events[eventName] = []
+  if (!this._events.hasOwnProperty(eventName)) {
+    this._events[eventName] = []
   }
 
-  if (!this.eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
-    this.eventsWillBeFiredOnce[eventName] = []
+  if (!this._eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
+    this._eventsWillBeFiredOnce[eventName] = []
   }
 
-  const opts = this.isObject(_opts) ? _opts : {once: false}
+  const opts = Object.prototype.toString.call(_opts) === '[object Object]'
+    ? _opts
+    : {once: false}
 
-  const newLength = this.events[eventName].push(fn)
+  const newLength = this._events[eventName].push(fn)
 
   if (opts.once && opts.once === true) {
-    this.eventsWillBeFiredOnce[eventName].push( newLength - 1 )
+    this._eventsWillBeFiredOnce[eventName].push( newLength - 1 )
   }
 
   return true
 }
 
 EventEmitter.prototype.once = function once(eventName, fn) {
-  this.on(eventName, fn, {once: true})
+  return this.on(eventName, fn, {once: true})
 }
 
 EventEmitter.prototype.emit = function emit(eventName, _args = []) {
-  if (!this.events.hasOwnProperty(eventName)) {
+  if (!this._events.hasOwnProperty(eventName)) {
     if (eventName == 'error') {
       const err = _args instanceof Error ? _args : new Error('Unhandled error.')
       throw err
@@ -48,13 +46,13 @@ EventEmitter.prototype.emit = function emit(eventName, _args = []) {
 
   const args = Array.isArray(_args) ? _args : [_args]
 
-  for (let i = 0; i < this.events[eventName].length; i++) {
-    this.events[eventName][i].apply(this, args)
+  for (let i = 0; i < this._events[eventName].length; i++) {
+    this._events[eventName][i].apply(this, args)
   }
 
-  if (this.eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
-    for (var j = 0; j < this.eventsWillBeFiredOnce[eventName].length; j++) {
-      this.removeListener(eventName, this.eventsWillBeFiredOnce[eventName][j])
+  if (this._eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
+    for (var j = 0; j < this._eventsWillBeFiredOnce[eventName].length; j++) {
+      this.removeListener(eventName, this._eventsWillBeFiredOnce[eventName][j])
     }
   }
 
@@ -62,7 +60,7 @@ EventEmitter.prototype.emit = function emit(eventName, _args = []) {
 }
 
 EventEmitter.prototype.removeListener = function removeListener(eventName, index) {
-  this.events[eventName].splice(index, 1)
+  this._events[eventName].splice(index, 1)
 }
 
 EventEmitter.prototype.removeListeners = function removeListeners(eventName) {
@@ -70,22 +68,22 @@ EventEmitter.prototype.removeListeners = function removeListeners(eventName) {
     return false
   }
 
-  if (!this.events.hasOwnProperty(eventName)) {
+  if (!this._events.hasOwnProperty(eventName)) {
     return false
   }
 
-  this.events[eventName] = []
+  this._events[eventName] = []
 
-  if (this.eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
-    this.eventsWillBeFiredOnce[eventName] = []
+  if (this._eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
+    this._eventsWillBeFiredOnce[eventName] = []
   }
 
   return true
 }
 
-EventEmitter.prototype.flush = function flush() {
-  this.events = {}
-  this.eventsWillBeFiredOnce = {}
+EventEmitter.prototype.flushEventEmitter = function flushEventEmitter() {
+  this._events = {}
+  this._eventsWillBeFiredOnce = {}
 }
 
 module.exports = EventEmitter

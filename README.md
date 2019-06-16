@@ -21,7 +21,6 @@ This package exports multiple builds. Developer has the responsibility to choose
 This is basically the source code itself but minified. There are no compilation and polyfills inside. Use it if you already have a compiler (like babel) and polyfills in your project. (which is mostly is the case.)
 
 ```js
-// just 1498 bytes
 const EventEmitter = require('event-emitter-object')
 ```
 
