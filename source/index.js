@@ -1,6 +1,6 @@
-function EventEmitter() {}
-
-EventEmitter.prototype._events = {}
+function EventEmitter(initialEvents) {
+  this._events = initialEvents || {}
+}
 
 EventEmitter.prototype._eventsWillBeFiredOnce = {}
 
