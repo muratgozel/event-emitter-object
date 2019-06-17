@@ -72,8 +72,9 @@ if (resourceNotFound) {
 const EventEmitter = require('event-emitter-object')
 
 // A Logger object which inherits the methods of EventEmitter
+const initialEvents = {} // you may not send this
 function Logger() {
-  EventEmitter.call(this)
+  EventEmitter.call(this, initialEvents)
 }
 Logger.prototype = Object.create(EventEmitter.prototype)
 Logger.prototype.constructor = Logger
@@ -153,3 +154,5 @@ This module uses the following polyfills in its polyfilled builds.
 2. `es.date.to-string`
 3. `es.object.to-string`
 4. `es.regexp.to-string`
+5. `es.array.reduce`
+6. `es.object.keys`

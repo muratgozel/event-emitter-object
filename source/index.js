@@ -1,5 +1,17 @@
 function EventEmitter(initialEvents) {
-  this._events = initialEvents || {}
+  const _initialEvents = initialEvents || {}
+  const eventNames = Object.keys(_initialEvents)
+  if (eventNames.length > 0) {
+    this._events = eventNames.reduce(function(memo, eventName) {
+      memo[eventName] = Array.isArray(_initialEvents[eventName])
+        ? _initialEvents[eventName]
+        : [_initialEvents[eventName]]
+      return memo
+    }, {})
+  }
+  else {
+    this._events = {}
+  }
 }
 
 EventEmitter.prototype._eventsWillBeFiredOnce = {}
