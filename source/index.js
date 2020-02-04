@@ -48,10 +48,13 @@ EventEmitter.prototype.once = function once(eventName, fn) {
 
 EventEmitter.prototype.emit = function emit(eventName, _args = []) {
   if (!this._events.hasOwnProperty(eventName)) {
+    /*
+    * deprecated
     if (eventName == 'error') {
       const err = _args instanceof Error ? _args : new Error('Unhandled error.')
       throw err
     }
+    */
 
     return false
   }
