@@ -1,10 +1,10 @@
 {
   "name": "event-emitter-object",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/index.js",
   "scripts": {
-    "release": "bash release/release.sh",
+    "release": "bash dev/push.sh",
     "builds": "npm run build && npm run build-umd && npm run build-umd-polyfilled",
     "build": "BABEL_ENV=development ./node_modules/.bin/minify ./source -d ./dist && ls -lR ./dist",
     "build-umd": "BABEL_ENV=development ./node_modules/.bin/browserify -s MyLittleLodash ./source/index.js -o ./dist/umd.js && ./node_modules/.bin/minify ./dist/umd.js --out-file ./dist/umd.js",
