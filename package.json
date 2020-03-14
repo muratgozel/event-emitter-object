@@ -1,6 +1,6 @@
 {
   "name": "event-emitter-object",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/index.js",
   "scripts": {
@@ -28,12 +28,12 @@
   },
   "homepage": "https://github.com/muratgozel/event-emitter-object#readme",
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "babel-minify": "^0.5.1",
     "babel-preset-minify": "^0.5.1",
     "browserify": "^16.5.0",
-    "core-js": "^3.3.6"
+    "core-js": "^3.6.4"
   }
 }

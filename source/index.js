@@ -48,21 +48,16 @@ EventEmitter.prototype.once = function once(eventName, fn) {
 
 EventEmitter.prototype.emit = function emit(eventName, _args = []) {
   if (!this._events.hasOwnProperty(eventName)) {
-    /*
-    * deprecated
-    if (eventName == 'error') {
-      const err = _args instanceof Error ? _args : new Error('Unhandled error.')
-      throw err
-    }
-    */
-
     return false
   }
 
   const args = Array.isArray(_args) ? _args : [_args]
+  const len = this._events[eventName].length
+  const results = []
 
-  for (let i = 0; i < this._events[eventName].length; i++) {
-    this._events[eventName][i].apply(this, args)
+  for (let i = 0; i < len; i++) {
+    const result = this._events[eventName][i].apply(this, args)
+    results.push(result)
   }
 
   if (this._eventsWillBeFiredOnce.hasOwnProperty(eventName)) {
@@ -71,7 +66,7 @@ EventEmitter.prototype.emit = function emit(eventName, _args = []) {
     }
   }
 
-  return true
+  return results
 }
 
 EventEmitter.prototype.removeListener = function removeListener(eventName, index) {

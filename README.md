@@ -130,6 +130,22 @@ emitter.on('anotherEvent', function(arg1, arg2) {
 emitter.emit('anotherEvent', ['hello', 'world'])
 ```
 
+`.emit` returns the results of the listeners:
+```js
+function listener() {
+  return 'hey'
+}
+
+function listener2() {
+  return 'selam'
+}
+
+emitter.on('sampleEvent', listener)
+
+const results = emitter.emit('sampleEvent')
+// results === ['hey', 'selam']
+```
+
 ### .removeListeners(eventName)
 
 Removes all listeners that belong to a certain event.
