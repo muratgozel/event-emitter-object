@@ -6,7 +6,6 @@ A simple event emitter object that you can plug into your javascript libraries.
 [![npm version](https://badge.fury.io/js/event-emitter-object.svg)](https://badge.fury.io/js/event-emitter-object)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/event-emitter-object)
 ![npm](https://img.shields.io/npm/dy/event-emitter-object)
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fmuratgozel)
 
 API is very similar to [the node.js events][305ab206].
 

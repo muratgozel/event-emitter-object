@@ -1,6 +1,6 @@
 {
   "name": "event-emitter-object",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple event emitter object that you can plug into your javascript libraries.",
   "main": "dist/event-emitter-object.cjs.js",
   "scripts": {
@@ -15,12 +15,20 @@
     "url": "git+https://github.com/muratgozel/event-emitter-object.git"
   },
   "keywords": [
-    "event",
-    "emitter",
+    "events",
+    "event-emitter",
     "javascript",
     "browser"
   ],
-  "author": "Murat Gözel <murat@gozel.com.tr>",
+  "author": {
+    "name": "Murat Gözel",
+    "email": "murat@gozel.com.tr",
+    "url": "https://gozel.com.tr"
+  },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/muratgozel"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/muratgozel/event-emitter-object/issues"
