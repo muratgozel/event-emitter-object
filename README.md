@@ -2,6 +2,12 @@
 
 A simple event emitter object that you can plug into your javascript libraries.
 
+![NPM](https://img.shields.io/npm/l/event-emitter-object)
+[![npm version](https://badge.fury.io/js/event-emitter-object.svg)](https://badge.fury.io/js/event-emitter-object)
+![npm bundle size](https://img.shields.io/bundlephobia/min/event-emitter-object)
+![npm](https://img.shields.io/npm/dy/event-emitter-object)
+![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fmuratgozel)
+
 API is very similar to [the node.js events][305ab206].
 
   [305ab206]: https://nodejs.org/api/events.html "node.js events api"
@@ -14,37 +20,19 @@ npm install event-emitter-object
 
 ## Import
 
-This package exports multiple builds. Developer has the responsibility to choose the one that best fits to her/his needs.
-
-1. **Minified (default)**
-
-This is basically the source code itself but minified. There are no compilation and polyfills inside. Use it if you already have a compiler (like babel) and polyfills in your project. (which is mostly is the case.)
+There are different types of distributions depending on your use case. Essentially, the package can be imported via require:
 
 ```js
 const EventEmitter = require('event-emitter-object')
 ```
 
-2. **UMD Bundle**
-
-The source code bundled with `browserify` to generate a `UMD` bundle. This bundle can also be imported by html script tag. No compilation and polyfills. The variable attached to the browser's `window` object is `EventEmitterObject`.
-
-```js
-const EventEmitterObject = require('event-emitter-object/dist/umd')
-```
-
-or
+or via script tag:
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@1/dist/umd.js" crossorigin type="text/javascript"></script>
+<script src="https://unpkg.com/event-emitter-object@1/dist/event-emitter-object.iife.js" crossorigin type="text/javascript"></script>
 ```
 
-3. **Polyfilled UMD bundle**
-
-The source code compiled with babel and bundled with `browserify` to generate a `UMD` bundle. This bundle can also be imported by html script tag. The variable attached to the browser's `window` object is `EventEmitterObject`.
-
-```html
-<script src="https://unpkg.com/event-emitter-object@1/dist/umd.polyfilled.js" crossorigin type="text/javascript"></script>
-```
+but there are lots of other options. See distribution report below.
 
 ## Use
 
@@ -146,29 +134,86 @@ const results = emitter.emit('sampleEvent')
 // results === ['hey', 'selam']
 ```
 
-### .removeListeners(eventName)
+### .removeEvent(eventName)
 
-Removes all listeners that belong to a certain event.
+Removes all listeners belong to a certain event.
 
 ```js
-emitter.removeListeners('someEvent')
+emitter.removeEvent('someEvent')
 ```
 
-### .flushEventEmitter()
+### .flush()
 
 Removes all events and listeners.
 
 ```js
-emitter.flushEventEmitter()
+emitter.flush()
 ```
+
+## Distributions Report
+
+This is an auto-generated report that shows the type, name and size of the bundles available to use individually.
+
+[comment]: # (DISTRIBUTIONS_REPORT_START)
+```js
+[
+  "event-emitter-object.amd.js (1.29 KB)",
+  "event-emitter-object.amd.polyfilled.js (11.68 KB)",
+  "event-emitter-object.cjs.js (1.29 KB)",
+  "event-emitter-object.cjs.polyfilled.js (11.68 KB)",
+  "event-emitter-object.es.js (1.27 KB)",
+  "event-emitter-object.es.polyfilled.js (11.67 KB)",
+  "event-emitter-object.iife.js (1.31 KB)",
+  "event-emitter-object.iife.polyfilled.js (11.70 KB)",
+  "event-emitter-object.umd.js (1.46 KB)",
+  "event-emitter-object.umd.polyfilled.js (11.85 KB)"
+]
+```
+[comment]: # (DISTRIBUTIONS_REPORT_END)
 
 ## Babel Polyfills Report
 
-This module uses the following polyfills in its polyfilled builds.
+This is an auto-generated report that shows the pollyfils added by core-js based on the targets configuration described below.
 
-1. `es.array.splice `
-2. `es.date.to-string`
-3. `es.object.to-string`
-4. `es.regexp.to-string`
-5. `es.array.reduce`
-6. `es.object.keys`
+[comment]: # (BABEL_POLYFILLS_REPORT_START)
+```js
+// polyfills:
+[
+  "es.symbol",
+  "es.symbol.description",
+  "es.symbol.iterator",
+  "es.array.iterator",
+  "es.object.get-prototype-of",
+  "es.object.set-prototype-of",
+  "es.object.to-string",
+  "es.reflect.construct",
+  "es.regexp.to-string",
+  "es.string.iterator",
+  "web.dom-collections.iterator",
+  "es.object.set-prototype-of",
+  "es.array.concat",
+  "es.array.filter",
+  "es.array.map",
+  "es.object.assign",
+  "es.object.keys",
+  "es.object.to-string",
+  "es.regexp.to-string"
+]
+// based on the targets:
+{
+  "android": "4.4.3",
+  "chrome": "49",
+  "edge": "17",
+  "firefox": "52",
+  "ie": "9",
+  "ios": "9.3",
+  "opera": "66",
+  "safari": "11.1",
+  "samsung": "4"
+}
+```
+[comment]: # (BABEL_POLYFILLS_REPORT_END)
+
+Thanks for watching 🐬
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F1RFO7)
