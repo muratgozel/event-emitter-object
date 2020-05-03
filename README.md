@@ -49,7 +49,7 @@ logger.on('criticalError', function(err) {
 })
 
 if (resourceNotFound) {
-  logger.emit('criticalError', [new Error('resourceNotFound')])
+  logger.emit('criticalError', new Error('resourceNotFound'))
 }
 ```
 
@@ -74,7 +74,7 @@ errorLogger.on('error', function(err) {
   // send log to the server
 })
 if (resourceNotFound) {
-  errorLogger.emit('error', [new Error('resourceNotFound')])
+  errorLogger.emit('error', new Error('resourceNotFound'))
 }
 ```
 
@@ -156,16 +156,16 @@ This is an auto-generated report that shows the type, name and size of the bundl
 [comment]: # (DISTRIBUTIONS_REPORT_START)
 ```js
 [
-  "event-emitter-object.amd.js (1.29 KB)",
-  "event-emitter-object.amd.polyfilled.js (11.68 KB)",
-  "event-emitter-object.cjs.js (1.29 KB)",
-  "event-emitter-object.cjs.polyfilled.js (11.68 KB)",
-  "event-emitter-object.es.js (1.27 KB)",
-  "event-emitter-object.es.polyfilled.js (11.67 KB)",
-  "event-emitter-object.iife.js (1.31 KB)",
-  "event-emitter-object.iife.polyfilled.js (11.70 KB)",
-  "event-emitter-object.umd.js (1.46 KB)",
-  "event-emitter-object.umd.polyfilled.js (11.85 KB)"
+  "event-emitter-object.amd.js (1.32 KB)",
+  "event-emitter-object.amd.polyfilled.js (11.71 KB)",
+  "event-emitter-object.cjs.js (1.32 KB)",
+  "event-emitter-object.cjs.polyfilled.js (11.71 KB)",
+  "event-emitter-object.es.js (1.30 KB)",
+  "event-emitter-object.es.polyfilled.js (11.70 KB)",
+  "event-emitter-object.iife.js (1.34 KB)",
+  "event-emitter-object.iife.polyfilled.js (11.73 KB)",
+  "event-emitter-object.umd.js (1.49 KB)",
+  "event-emitter-object.umd.polyfilled.js (11.88 KB)"
 ]
 ```
 [comment]: # (DISTRIBUTIONS_REPORT_END)
@@ -189,14 +189,11 @@ This is an auto-generated report that shows the pollyfils added by core-js based
   "es.regexp.to-string",
   "es.string.iterator",
   "web.dom-collections.iterator",
-  "es.object.set-prototype-of",
   "es.array.concat",
   "es.array.filter",
   "es.array.map",
   "es.object.assign",
-  "es.object.keys",
-  "es.object.to-string",
-  "es.regexp.to-string"
+  "es.object.keys"
 ]
 // based on the targets:
 {

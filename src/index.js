@@ -36,13 +36,15 @@ EventEmitter.prototype.once = function once(name, fn) {
   return this.on(name, fn, {once: true})
 }
 
-EventEmitter.prototype.emit = function emit(name, _args = []) {
+EventEmitter.prototype.emit = function emit(name, _args = undefined) {
   const self = this
   if (typeof name != 'string') return undefined;
   if (!self._events.hasOwnProperty(name)) return undefined;
   if (self._events[name].length < 1) return undefined;
 
-  const args = Array.isArray(_args) ? _args : [_args]
+  const args = Array.isArray(_args) && _args.length > 0 ? _args :
+    typeof _args != 'undefined' ? [_args] :
+    undefined
   const results = self._events[name].map(function(obj) {
     return obj.fn.apply(self, args)
   })
