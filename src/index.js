@@ -17,7 +17,7 @@ EventEmitter.prototype.checkInitialEvents = function checkInitialEvents(events =
 }
 
 EventEmitter.prototype.on = function on(name, fn, _opts = null) {
-  if (typeof fn != 'function' || typeof name != 'string') return undefined;
+  if (typeof fn != 'function' || typeof name != 'string') return this
 
   if (!this._events.hasOwnProperty(name)) this._events[name] = []
 
@@ -29,7 +29,7 @@ EventEmitter.prototype.on = function on(name, fn, _opts = null) {
 
   this._events[name] = this._events[name].concat([e])
 
-  return true
+  return this
 }
 
 EventEmitter.prototype.once = function once(name, fn) {
@@ -67,6 +67,7 @@ EventEmitter.prototype.removeEvent = function removeEvent(eventName) {
 
 EventEmitter.prototype.flush = function flush() {
   this._events = {}
+  return this
 }
 
 module.exports = EventEmitter
