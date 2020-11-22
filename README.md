@@ -28,7 +28,7 @@ const EventEmitter = require('event-emitter-object')
 or via script tag:
 
 ```html
-<script src="https://unpkg.com/event-emitter-object@1/dist/event-emitter-object.iife.js" crossorigin type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/event-emitter-object@1/dist/event-emitter-object.iife.js" crossorigin type="text/javascript"></script>
 ```
 
 but there are lots of other options. See distribution report below.
@@ -157,15 +157,15 @@ This is an auto-generated report that shows the type, name and size of the bundl
 ```js
 [
   "event-emitter-object.amd.js (1.35 KB)",
-  "event-emitter-object.amd.polyfilled.js (11.74 KB)",
+  "event-emitter-object.amd.polyfilled.js (11.82 KB)",
   "event-emitter-object.cjs.js (1.34 KB)",
-  "event-emitter-object.cjs.polyfilled.js (11.73 KB)",
+  "event-emitter-object.cjs.polyfilled.js (11.82 KB)",
   "event-emitter-object.es.js (1.33 KB)",
-  "event-emitter-object.es.polyfilled.js (11.72 KB)",
+  "event-emitter-object.es.polyfilled.js (11.81 KB)",
   "event-emitter-object.iife.js (1.36 KB)",
-  "event-emitter-object.iife.polyfilled.js (11.75 KB)",
-  "event-emitter-object.umd.js (1.52 KB)",
-  "event-emitter-object.umd.polyfilled.js (11.91 KB)"
+  "event-emitter-object.iife.polyfilled.js (11.84 KB)",
+  "event-emitter-object.umd.js (1.56 KB)",
+  "event-emitter-object.umd.polyfilled.js (12.03 KB)"
 ]
 ```
 [comment]: # (DISTRIBUTIONS_REPORT_END)
@@ -178,33 +178,25 @@ This is an auto-generated report that shows the pollyfils added by core-js based
 ```js
 // polyfills:
 [
-  "es.symbol",
-  "es.symbol.description",
-  "es.symbol.iterator",
-  "es.array.iterator",
-  "es.object.get-prototype-of",
   "es.object.set-prototype-of",
-  "es.object.to-string",
-  "es.reflect.construct",
-  "es.regexp.to-string",
-  "es.string.iterator",
-  "web.dom-collections.iterator",
   "es.array.concat",
   "es.array.filter",
   "es.array.map",
   "es.object.assign",
-  "es.object.keys"
+  "es.object.keys",
+  "es.object.to-string",
+  "es.regexp.to-string"
 ]
 // based on the targets:
 {
-  "android": "4.4.3",
+  "android": "84",
   "chrome": "49",
-  "edge": "17",
-  "firefox": "52",
+  "edge": "18",
+  "firefox": "78",
   "ie": "9",
   "ios": "9.3",
-  "opera": "66",
-  "safari": "11.1",
+  "opera": "70",
+  "safari": "5.1",
   "samsung": "4"
 }
 ```
