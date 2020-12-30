@@ -96,16 +96,16 @@ This is an auto-generated report that shows the type, name and size of the bundl
 [comment]: # (DISTRIBUTIONS_REPORT_START)
 ```js
 [
-  "event-emitter-object.amd.js (1.11 KB)",
-  "event-emitter-object.amd.polyfilled.js (10.69 KB)",
-  "event-emitter-object.cjs.js (1.10 KB)",
-  "event-emitter-object.cjs.polyfilled.js (10.70 KB)",
-  "event-emitter-object.es.js (1.09 KB)",
-  "event-emitter-object.es.polyfilled.js (10.69 KB)",
-  "event-emitter-object.iife.js (1.13 KB)",
-  "event-emitter-object.iife.polyfilled.js (10.70 KB)",
-  "event-emitter-object.umd.js (1.32 KB)",
-  "event-emitter-object.umd.polyfilled.js (10.90 KB)"
+  "event-emitter-object.amd.js (1.08 KB)",
+  "event-emitter-object.amd.polyfilled.js (10.66 KB)",
+  "event-emitter-object.cjs.js (1.08 KB)",
+  "event-emitter-object.cjs.polyfilled.js (10.67 KB)",
+  "event-emitter-object.es.js (1.06 KB)",
+  "event-emitter-object.es.polyfilled.js (10.66 KB)",
+  "event-emitter-object.iife.js (1.10 KB)",
+  "event-emitter-object.iife.polyfilled.js (10.68 KB)",
+  "event-emitter-object.umd.js (1.30 KB)",
+  "event-emitter-object.umd.polyfilled.js (10.87 KB)"
 ]
 ```
 [comment]: # (DISTRIBUTIONS_REPORT_END)

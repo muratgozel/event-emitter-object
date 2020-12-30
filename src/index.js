@@ -38,7 +38,7 @@ function EventEmitterFactory() {
 
     function emit(name, args=undefined) {
       if (!state._events.hasOwnProperty(name)) {
-        throw new Error('No such event.')
+        return []
       }
 
       const results = []
