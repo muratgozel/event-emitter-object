@@ -1,73 +1,87 @@
-function EventEmitter(initialEvents) {
-  this._events = {}
-  this.checkInitialEvents(initialEvents)
-}
+function EventEmitterFactory() {
+  const validEventOpts = ['once']
 
-EventEmitter.prototype.checkInitialEvents = function checkInitialEvents(events = null) {
-  const self = this
+  function EventEmitter(initialEvents=null) {
+    const state = {
+      _events: {},
+    }
 
-  if (Object.prototype.toString.call(events) === '[object Object]') {
-    const names = Object.keys(events)
-    if (names.length > 0) {
-      names.map(function(name) {
-        self.on(name, events[name])
+    if (Object.prototype.toString.call(initialEvents) === '[object Object]') {
+      loadInitialEvents(initialEvents)
+    }
+
+    function loadInitialEvents(events) {
+      Object.keys(events).map(function(name) {
+        on(name, events[name])
       })
     }
+
+    function on(name, fn, opts=null) {
+      if (!state._events.hasOwnProperty(name)) {
+        state._events[name] = []
+      }
+
+      const eventObj = {}
+      if (Object.prototype.toString.call(opts) === '[object Object]') {
+        Object.keys(opts)
+          .filter(function(opt) { return validEventOpts.indexOf(opt) !== -1; })
+          .map(function(opt) { eventObj[opt] = opts[opt]; })
+      }
+      eventObj.fn = fn
+
+      state._events[name].push(eventObj)
+    }
+
+    function once(name, fn) {
+      on(name, fn, {once: true})
+    }
+
+    function emit(name, args=undefined) {
+      if (!state._events.hasOwnProperty(name)) {
+        throw new Error('No such event.')
+      }
+
+      const results = []
+      const willRemove = []
+      for (let i = 0; i < state._events[name].length; i++) {
+        const eventObj = state._events[name][i]
+        if (eventObj.once === true) willRemove.push(i)
+        const result = eventObj.fn.apply(null, args)
+        results.push(result)
+      }
+
+      if (willRemove.length > 0) {
+        cleanup(name, willRemove)
+      }
+
+      return results
+    }
+
+    function flush() {
+      state._events = {}
+    }
+
+    function cleanup(name, indexes) {
+      const newEvents = []
+      for (let i = 0; i < state._events[name].length; i++) {
+        if (indexes.indexOf(i) === -1) {
+          newEvents.push(state._events[name][i])
+        }
+      }
+      state._events[name] = newEvents
+    }
+
+    return {
+      on: on,
+      once: once,
+      emit: emit,
+      flush: flush
+    }
+  }
+
+  return {
+    create: EventEmitter
   }
 }
 
-EventEmitter.prototype.on = function on(name, fn, _opts = null) {
-  if (typeof fn != 'function' || typeof name != 'string') return this
-
-  if (!this._events.hasOwnProperty(name)) this._events[name] = []
-
-  const opts = Object.assign({},
-    {once: false},
-    Object.prototype.toString.call(_opts) === '[object Object]' ? _opts : {}
-  )
-  const e = Object.assign({}, opts, {fn: fn})
-
-  this._events[name] = this._events[name].concat([e])
-
-  return this
-}
-
-EventEmitter.prototype.once = function once(name, fn) {
-  return this.on(name, fn, {once: true})
-}
-
-EventEmitter.prototype.emit = function emit(name, _args = undefined) {
-  const self = this
-  if (typeof name != 'string') return undefined;
-  if (!self._events.hasOwnProperty(name)) return undefined;
-  if (self._events[name].length < 1) return undefined;
-
-  const args = Array.isArray(_args) && _args.length > 0 ? _args :
-    typeof _args != 'undefined' ? [_args] :
-    undefined
-  const results = self._events[name].map(function(obj) {
-    return obj.fn.apply(self, args)
-  })
-
-  self._events[name] = self._events[name].filter(function(obj) {
-    return obj.once === false
-  })
-
-  return results
-}
-
-EventEmitter.prototype.removeEvent = function removeEvent(eventName) {
-  if (typeof eventName != 'string') return false;
-  if (!this._events.hasOwnProperty(eventName)) return false
-
-  this._events[eventName] = []
-
-  return true
-}
-
-EventEmitter.prototype.flush = function flush() {
-  this._events = {}
-  return this
-}
-
-module.exports = EventEmitter
+module.exports = EventEmitterFactory()
