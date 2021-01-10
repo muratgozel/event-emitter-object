@@ -46,7 +46,7 @@ function EventEmitterFactory() {
       for (let i = 0; i < state._events[name].length; i++) {
         const eventObj = state._events[name][i]
         if (eventObj.once === true) willRemove.push(i)
-        const result = eventObj.fn.apply(null, args)
+        const result = eventObj.fn.apply(this, args)
         results.push(result)
       }
 
