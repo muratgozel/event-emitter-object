@@ -37,7 +37,7 @@ module.exports = {
     }
   ],
   plugins: [
-    nodeResolve(),
+    nodeResolve({browser: true}),
     commonjs(),
     babel(),
     terser()

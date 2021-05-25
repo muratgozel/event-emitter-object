@@ -97,15 +97,15 @@ This is an auto-generated report that shows the type, name and size of the bundl
 ```js
 [
   "event-emitter-object.amd.js (1.08 KB)",
-  "event-emitter-object.amd.polyfilled.js (10.66 KB)",
+  "event-emitter-object.amd.polyfilled.js (10.61 KB)",
   "event-emitter-object.cjs.js (1.08 KB)",
-  "event-emitter-object.cjs.polyfilled.js (10.67 KB)",
+  "event-emitter-object.cjs.polyfilled.js (10.64 KB)",
   "event-emitter-object.es.js (1.06 KB)",
-  "event-emitter-object.es.polyfilled.js (10.66 KB)",
+  "event-emitter-object.es.polyfilled.js (10.63 KB)",
   "event-emitter-object.iife.js (1.10 KB)",
-  "event-emitter-object.iife.polyfilled.js (10.68 KB)",
+  "event-emitter-object.iife.polyfilled.js (10.63 KB)",
   "event-emitter-object.umd.js (1.30 KB)",
-  "event-emitter-object.umd.polyfilled.js (10.87 KB)"
+  "event-emitter-object.umd.polyfilled.js (10.82 KB)"
 ]
 ```
 [comment]: # (DISTRIBUTIONS_REPORT_END)
@@ -117,24 +117,16 @@ This is an auto-generated report that shows the pollyfils added by core-js based
 [comment]: # (BABEL_POLYFILLS_REPORT_START)
 ```js
 // polyfills:
-[
-  "es.object.get-prototype-of",
-  "es.object.set-prototype-of",
-  "es.array.filter",
-  "es.array.index-of",
-  "es.array.map",
-  "es.object.keys",
-  "es.object.to-string",
-  "es.regexp.to-string"
-]
+[]
 // based on the targets:
 {
+  "android": "4.4.3",
   "chrome": "49",
   "edge": "18",
   "firefox": "78",
   "ie": "10",
-  "ios": "9.3",
-  "opera": "71",
+  "ios": "6",
+  "opera": "73",
   "safari": "5.1",
   "samsung": "4"
 }
