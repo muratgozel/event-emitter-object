@@ -22,7 +22,7 @@ const EventEmitterObject = require('event-emitter-object')
 ```
 or via script tag:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/event-emitter-object@2/dist/event-emitter-object.iife.js" crossorigin type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/event-emitter-object@4/dist/event-emitter-object.iife.js" crossorigin type="text/javascript"></script>
 ```
 but there are lots of other options. See distribution report below.
 
